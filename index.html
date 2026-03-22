@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julian Schmidt – Cloud Consulting & Microsoft 365 Expert</title>
+<meta name="description" content="Julian Schmidt – Teamleitung Cloud Consulting, Microsoft 365 Expert. Spezialisiert auf Tenant-Architekturen, Migrationen und Modern Work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0f1a;--bg2:#111827;--bg3:#1a2332;--surface:#1e293b;
+  --accent:#3b82f6;--accent2:#60a5fa;--accent-glow:rgba(59,130,246,.15);
+  --gold:#f59e0b;--gold2:#fbbf24;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --border:#1e293b;--radius:12px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--accent2);text-decoration:none;transition:color .2s}
+a:hover{color:var(--gold2)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,15,26,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.75rem 0;transition:all .3s}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-weight:700;font-size:1.1rem;color:var(--text);letter-spacing:-.02em}
+.nav-brand span{color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links a{color:var(--text2);font-size:.85rem;font-weight:500;letter-spacing:.02em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--accent2)}
+.lang-toggle{background:var(--surface);border:1px solid var(--border);color:var(--text2);padding:.35rem .75rem;border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:600;font-family:inherit;transition:all .2s}
+.lang-toggle:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 60% 40%,rgba(59,130,246,.08) 0%,transparent 60%);pointer-events:none}
+.hero-grid{max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-text h1{font-size:3rem;font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:.75rem}
+.hero-text h1 .accent{color:var(--accent2)}
+.hero-text .subtitle{font-size:1.2rem;color:var(--gold);font-weight:500;margin-bottom:1.5rem}
+.hero-text .intro{color:var(--text2);font-size:1.05rem;line-height:1.7;margin-bottom:2rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:8px;font-weight:600;font-size:.9rem;transition:all .25s;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#2563eb;color:#fff;transform:translateY(-1px);box-shadow:0 4px 20px rgba(59,130,246,.4)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text2)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent2)}
+
+.hero-photo{display:flex;justify-content:center}
+.photo-wrapper{position:relative;width:280px;height:280px}
+.photo-wrapper img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:3px solid var(--surface);position:relative;z-index:1}
+.photo-ring{position:absolute;inset:-8px;border-radius:50%;border:2px solid var(--accent);opacity:.4;animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.2;transform:scale(1.02)}}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem}
+.section-title{font-size:2rem;font-weight:700;letter-spacing:-.02em;margin-bottom:1rem}
+.section-title span{color:var(--accent2)}
+.section-desc{color:var(--text2);max-width:600px;margin-bottom:3rem}
+
+/* STATS */
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-num{font-size:2.5rem;font-weight:700;color:var(--accent2);line-height:1}
+.stat-label{font-size:.85rem;color:var(--text3);margin-top:.5rem}
+
+/* PROJECT CARDS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:all .3s;position:relative;overflow:hidden}
+.project-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));opacity:0;transition:opacity .3s}
+.project-card:hover::before{opacity:1}
+.project-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);background:var(--accent-glow);padding:.25rem .6rem;border-radius:4px;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.05em}
+.project-card h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+.project-card p{font-size:.9rem;color:var(--text2);line-height:1.6}
+.project-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.project-tech span{font-size:.7rem;padding:.2rem .5rem;border-radius:4px;background:var(--bg2);color:var(--text3);border:1px solid var(--border)}
+
+/* SKILLS */
+.skills-section{background:var(--bg2)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+.skill-item{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;transition:border-color .2s}
+.skill-item:hover{border-color:var(--accent)}
+.skill-name{font-size:.9rem;font-weight:500}
+.skill-dots{display:flex;gap:4px}
+.skill-dot{width:8px;height:8px;border-radius:50%;background:var(--bg);border:1px solid var(--text3)}
+.skill-dot.filled{background:var(--accent);border-color:var(--accent)}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center;transition:all .3s}
+.cert-card:hover{border-color:var(--gold);box-shadow:0 0 20px rgba(245,158,11,.1)}
+.cert-code{font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--gold);margin-bottom:.25rem}
+.cert-name{font-size:.8rem;color:var(--text2)}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:2rem;padding-left:1.5rem}
+.timeline-item::before{content:'';position:absolute;left:-2rem;top:.5rem;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);z-index:1}
+.timeline-item.current::before{box-shadow:0 0 0 4px var(--accent-glow)}
+.timeline-role{font-size:1rem;font-weight:600}
+.timeline-meta{font-size:.85rem;color:var(--text3);margin-bottom:.25rem}
+.timeline-desc{font-size:.9rem;color:var(--text2)}
+
+/* CONTACT */
+.contact{background:var(--bg2);border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:2rem}
+.contact-item{display:flex;align-items:center;gap:1rem}
+.contact-icon{width:44px;height:44px;border-radius:10px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:1.2rem;flex-shrink:0}
+.contact-label{font-size:.75rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
+.contact-value{font-size:.95rem;font-weight:500}
+
+/* FOOTER */
+footer{padding:2rem;text-align:center;color:var(--text3);font-size:.8rem;border-top:1px solid var(--border)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero-text h1{font-size:2.2rem}
+  .hero-photo{order:-1}
+  .photo-wrapper{width:200px;height:200px}
+  .hero-cta{justify-content:center}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links a.nav-desktop{display:none}
+  section{padding:3rem 1.25rem}
+}
+
+/* HIDDEN LANG */
+[data-lang]{display:none}
+[data-lang].active{display:initial}
+.block[data-lang]{display:none}
+.block[data-lang].active{display:block}
+.flex[data-lang]{display:none}
+.flex[data-lang].active{display:flex}
+.grid[data-lang]{display:none}
+.grid[data-lang].active{display:grid}
+.inline[data-lang]{display:none}
+.inline[data-lang].active{display:inline}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-inner">
+  <div class="nav-brand">jschmidt<span>-it</span>.de</div>
+  <div class="nav-links">
+    <a href="#projects" class="nav-desktop" data-lang="de" class="active">Projekte</a>
+    <a href="#projects" class="nav-desktop" data-lang="en">Projects</a>
+    <a href="#skills" class="nav-desktop" data-lang="de" class="active">Skills</a>
+    <a href="#skills" class="nav-desktop" data-lang="en">Skills</a>
+    <a href="#experience" class="nav-desktop" data-lang="de" class="active">Erfahrung</a>
+    <a href="#experience" class="nav-desktop" data-lang="en">Experience</a>
+    <a href="#contact" data-lang="de" class="active">Kontakt</a>
+    <a href="#contact" data-lang="en">Contact</a>
+    <button class="lang-toggle" onclick="toggleLang()">EN</button>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-grid">
+  <div class="hero-text">
+    <h1>
+      <span data-lang="de" class="active">Cloud Consulting &amp;</span>
+      <span data-lang="en">Cloud Consulting &amp;</span>
+      <br><span class="accent">Microsoft 365</span>
+    </h1>
+    <div class="subtitle">
+      <span data-lang="de" class="active">Teamleitung Cloud Consulting · Vater Business IT</span>
+      <span data-lang="en">Cloud Consulting Team Lead · Vater Business IT</span>
+    </div>
+    <p class="intro">
+      <span data-lang="de" class="active">Spezialisiert auf Tenant-Architekturen, Cross-Tenant-Migrationen und Modern-Work-Transformationen. Von der strategischen Beratung auf C-Level bis zur technischen Umsetzung komplexer M365-Projekte.</span>
+      <span data-lang="en">Specialized in tenant architectures, cross-tenant migrations, and modern work transformations. From C-level strategic consulting to hands-on implementation of complex M365 projects.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">
+        <span data-lang="de" class="active">Kontakt aufnehmen</span>
+        <span data-lang="en">Get in touch</span>
+      </a>
+      <a href="#projects" class="btn btn-outline">
+        <span data-lang="de" class="active">Projekte ansehen</span>
+        <span data-lang="en">View projects</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="photo-wrapper">
+      <img src="photo.jpg" alt="Julian Schmidt">
+      <div class="photo-ring"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+<div class="container">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-num">5+</div>
+      <div class="stat-label" data-lang="de" class="active">Jahre Cloud Consulting</div>
+      <div class="stat-label" data-lang="en">Years Cloud Consulting</div>
+    </div>
+    <div>
+      <div class="stat-num">100+</div>
+      <div class="stat-label" data-lang="de" class="active">Migrierte User</div>
+      <div class="stat-label" data-lang="en">Migrated Users</div>
+    </div>
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label" data-lang="de" class="active">Microsoft Zertifizierungen</div>
+      <div class="stat-label" data-lang="en">Microsoft Certifications</div>
+    </div>
+    <div>
+      <div class="stat-num">#1</div>
+      <div class="stat-label" data-lang="de" class="active">Jahrgangsbester IHK S-H</div>
+      <div class="stat-label" data-lang="en">Top Graduate IHK S-H</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<div class="container">
+  <div class="section-label">
+    <span data-lang="de" class="active">Projekt-Highlights</span>
+    <span data-lang="en">Project Highlights</span>
+  </div>
+  <h2 class="section-title">
+    <span data-lang="de" class="active">Ausgew&auml;hlte <span>Projekte</span></span>
+    <span data-lang="en">Selected <span>Projects</span></span>
+  </h2>
+  <p class="section-desc">
+    <span data-lang="de" class="active">Einblicke in komplexe Cloud-Projekte, die ich geplant und umgesetzt habe.</span>
+    <span data-lang="en">Insights into complex cloud projects I planned and delivered.</span>
+  </p>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-tag">Migration</div>
+      <h3>
+        <span data-lang="de" class="active">Cross-Tenant M365-Migration</span>
+        <span data-lang="en">Cross-Tenant M365 Migration</span>
+      </h3>
+      <p>
+        <span data-lang="de" class="active">Vollst&auml;ndige Tenant-zu-Tenant-Migration mit mehreren Hundert Usern. SharePoint-Neuaufbau, teamweise Datenmigration, Identity-Cutover und anschlie&szlig;ende Administration des Zielsystems.</span>
+        <span data-lang="en">Full tenant-to-tenant migration with several hundred users. SharePoint rebuild, team-based data migration, identity cutover, and ongoing administration of the target system.</span>
+      </p>
+      <div class="project-tech">
+        <span>SharePoint Online</span><span>Entra ID</span><span>ShareGate</span><span>PowerShell</span><span>Exchange Online</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Greenfield</div>
+      <h3>
+        <span data-lang="de" class="active">Greenfield Tenant-Aufbauten</span>
+        <span data-lang="en">Greenfield Tenant Builds</span>
+      </h3>
+      <p>
+        <span data-lang="de" class="active">Planung und vollst&auml;ndiger Neuaufbau mehrerer Microsoft 365 Tenants f&uuml;r Unternehmenskunden &mdash; inkl. Entra ID Konfiguration, Conditional Access, Intune und SharePoint-Informationsarchitektur.</span>
+        <span data-lang="en">Planning and complete build-out of multiple Microsoft 365 tenants for enterprise customers &mdash; including Entra ID configuration, Conditional Access, Intune, and SharePoint information architecture.</span>
+      </p>
+      <div class="project-tech">
+        <span>Microsoft 365</span><span>Entra ID</span><span>Intune</span><span>Conditional Access</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Compliance</div>
+      <h3>
+        <span data-lang="de" class="active">Microsoft Purview Rollout</span>
+        <span data-lang="en">Microsoft Purview Rollout</span>
+      </h3>
+      <p>
+        <span data-lang="de" class="active">Konzeption und Implementierung von DLP-Richtlinien, Sensitivit&auml;tslabels und Compliance-Policies f&uuml;r den Schutz sensibler Unternehmensdaten in einer Multi-Workload-Umgebung.</span>
+        <span data-lang="en">Design and implementation of DLP policies, sensitivity labels, and compliance policies to protect sensitive corporate data in a multi-workload environment.</span>
+      </p>
+      <div class="project-tech">
+        <span>Microsoft Purview</span><span>DLP</span><span>Sensitivity Labels</span><span>Compliance</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Automation</div>
+      <h3>
+        <span data-lang="de" class="active">Gesch&auml;ftsprozess-Automatisierung</span>
+        <span data-lang="en">Business Process Automation</span>
+      </h3>
+      <p>
+        <span data-lang="de" class="active">Entwicklung von PowerShell-Skripten und Power Automate Flows zur Automatisierung wiederkehrender IT- und Gesch&auml;ftsprozesse &mdash; messbare Effizienzsteigerung und Reduzierung manueller Arbeit.</span>
+        <span data-lang="en">Development of PowerShell scripts and Power Automate flows to automate recurring IT and business processes &mdash; measurable efficiency gains and reduction of manual tasks.</span>
+      </p>
+      <div class="project-tech">
+        <span>PowerShell</span><span>Power Automate</span><span>Power Apps</span><span>Graph API</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Intranet</div>
+      <h3>
+        <span data-lang="de" class="active">Intranet-Aufbau &amp; Fileserver-Migration</span>
+        <span data-lang="en">Intranet Build &amp; File Server Migration</span>
+      </h3>
+      <p>
+        <span data-lang="de" class="active">Konzeption und Aufbau von SharePoint Online-Intranets als zentrale Unternehmensplattform. Migration von On-Premises Fileservern in die Cloud inkl. Berechtigungskonzept, Informationsarchitektur und Schulungen f&uuml;r Mitarbeiter zur Einf&uuml;hrung neuer Arbeitsweisen.</span>
+        <span data-lang="en">Design and build of SharePoint Online intranets as central enterprise platforms. Migration from on-premises file servers to the cloud including permissions concept, information architecture, and employee training for adopting new ways of working.</span>
+      </p>
+      <div class="project-tech">
+        <span>SharePoint Online</span><span>Migration Manager</span><span>OneDrive</span><span>Adoption &amp; Change</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+<div class="container">
+  <div class="section-label">
+    <span data-lang="de" class="active">Technische Kompetenzen</span>
+    <span data-lang="en">Technical Expertise</span>
+  </div>
+  <h2 class="section-title">
+    <span data-lang="de" class="active">Skills &amp; <span>Technologien</span></span>
+    <span data-lang="en">Skills &amp; <span>Technologies</span></span>
+  </h2>
+
+  <div class="skills-grid" id="skillsGrid"></div>
+
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-code">MS-102</div>
+      <div class="cert-name">M365 Certified: Administrator Expert</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-code">SC-300</div>
+      <div class="cert-name">Identity &amp; Access Administrator Associate</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-code">AdA / AEVO</div>
+      <div class="cert-name">
+        <span data-lang="de" class="active">Ausbildereignung &middot; IHK Kiel 2024</span>
+        <span data-lang="en">Certified Instructor &middot; IHK Kiel 2024</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+<div class="container">
+  <div class="section-label">
+    <span data-lang="de" class="active">Werdegang</span>
+    <span data-lang="en">Career</span>
+  </div>
+  <h2 class="section-title">
+    <span data-lang="de" class="active">Berufliche <span>Erfahrung</span></span>
+    <span data-lang="en">Professional <span>Experience</span></span>
+  </h2>
+
+  <div class="timeline">
+    <div class="timeline-item current">
+      <div class="timeline-role">Teamleitung – Cloud Consulting</div>
+      <div class="timeline-meta">Vater Business IT GmbH, Kiel · <span data-lang="de" class="active">seit 10/2025</span><span data-lang="en">since 10/2025</span></div>
+      <div class="timeline-desc">
+        <span data-lang="de" class="active">Fachliche und disziplinarische F&uuml;hrung des Cloud Consulting Teams. Strategische Beratung, Migrationsvorhaben, Serviceportfolio-Entwicklung, Budget- und Kapazit&auml;tsplanung.</span>
+        <span data-lang="en">Technical and disciplinary leadership of the Cloud Consulting team. Strategic advisory, migration projects, service portfolio development, budget and capacity planning.</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-role">Cloud Engineer – Cloud Consulting</div>
+      <div class="timeline-meta">Vater Business IT GmbH, Kiel · 01/2024 – 09/2025</div>
+      <div class="timeline-desc">
+        <span data-lang="de" class="active">Cross-Tenant-Migrationen, Tenant-Neuaufbauten, Purview-Implementierungen, SharePoint-Architekturen, Presales und Ausbildung.</span>
+        <span data-lang="en">Cross-tenant migrations, greenfield tenant builds, Purview implementations, SharePoint architectures, presales, and apprentice training.</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-role">Junior System Engineer – Cloud Consulting</div>
+      <div class="timeline-meta">Vater Business IT GmbH, Kiel · 02/2023 – 12/2023</div>
+      <div class="timeline-desc">
+        <span data-lang="de" class="active">PowerShell-Automatisierung, M365-Migrationen, technische Dokumentation, Schulungen.</span>
+        <span data-lang="en">PowerShell automation, M365 migrations, technical documentation, training workshops.</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-role">
+        <span data-lang="de" class="active">Ausbildung Fachinformatiker Systemintegration</span>
+        <span data-lang="en">IT Specialist Apprenticeship (System Integration)</span>
+      </div>
+      <div class="timeline-meta">Vater Business IT GmbH, Kiel · 05/2020 – 02/2023</div>
+      <div class="timeline-desc" style="color:var(--gold)">
+        <span data-lang="de" class="active">&#9733; Jahrgangsbester Schleswig-Holstein &middot; IHK Kiel, Schnitt 1,3 &middot; Berufsschule 1,0</span>
+        <span data-lang="en">&#9733; Top graduate in Schleswig-Holstein &middot; IHK Kiel, GPA 1.3 &middot; Vocational school 1.0</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<div class="container">
+  <div class="section-label">
+    <span data-lang="de" class="active">Kontakt</span>
+    <span data-lang="en">Contact</span>
+  </div>
+  <h2 class="section-title">
+    <span data-lang="de" class="active">Sprechen wir <span>&uuml;ber Ihr Projekt</span></span>
+    <span data-lang="en">Let's talk about <span>your project</span></span>
+  </h2>
+
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="contact-icon">&#9993;</div>
+      <div>
+        <div class="contact-label">E-Mail</div>
+        <div class="contact-value"><a href="mailto:Julian@JSchmidt-IT.de">Julian@JSchmidt-IT.de</a></div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">&#9742;</div>
+      <div>
+        <div class="contact-label">
+          <span data-lang="de" class="active">Telefon</span>
+          <span data-lang="en">Phone</span>
+        </div>
+        <div class="contact-value"><a href="tel:+491702172603">+49 170 2172603</a></div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">&#9873;</div>
+      <div>
+        <div class="contact-label">
+          <span data-lang="de" class="active">Standort</span>
+          <span data-lang="en">Location</span>
+        </div>
+        <div class="contact-value">Kiel, Deutschland</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <span data-lang="de" class="active">&copy; 2026 Julian Schmidt &middot; Cloud Consulting &amp; Microsoft 365</span>
+  <span data-lang="en">&copy; 2026 Julian Schmidt &middot; Cloud Consulting &amp; Microsoft 365</span>
+</footer>
+
+<script>
+// Skills data
+const skills = [
+  {n:"M365 Administration",l:5},{n:"Tenant-Architektur & Migration",l:5},
+  {n:"Entra ID / Azure AD",l:5},{n:"SharePoint Online",l:5},
+  {n:"Microsoft Purview",l:4},{n:"PowerShell",l:4},
+  {n:"Power Automate / Power Apps",l:4},{n:"Teamführung & Mentoring",l:4},
+  {n:"Presales & C-Level Beratung",l:4},{n:"Azure (IaaS/PaaS)",l:3},
+  {n:"Docker / Container",l:2},{n:"Linux Server",l:2},
+];
+const grid=document.getElementById('skillsGrid');
+skills.forEach(s=>{
+  const dots=Array.from({length:5},(_, i)=>`<div class="skill-dot${i<s.l?' filled':''}"></div>`).join('');
+  grid.innerHTML+=`<div class="skill-item"><span class="skill-name">${s.n}</span><div class="skill-dots">${dots}</div></div>`;
+});
+
+// Language toggle
+let lang='de';
+function toggleLang(){
+  lang=lang==='de'?'en':'de';
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    el.classList.toggle('active',el.dataset.lang===lang);
+  });
+  document.querySelector('.lang-toggle').textContent=lang==='de'?'EN':'DE';
+  document.documentElement.lang=lang;
+}
+// Init
+document.querySelectorAll('[data-lang="de"]').forEach(el=>el.classList.add('active'));
+</script>
+</body>
+</html>
